@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import Retrieve from './Components/Retrieve';
+import CreateList from './Components/Create';
 
 function App() {
-	Retrieve();
 	return (
 		<div className="App">
 			<div>Hello</div>

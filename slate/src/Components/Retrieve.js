@@ -16,6 +16,7 @@ const Retrieve = () => {
 				records.forEach(function(record) {
 					console.log('Retrieved', record.get('Name'));
 					console.log('Retrieved', record.get('Category'));
+					console.log('Retrieved', record.getId());
 				});
 
 				// To fetch the next page of records, call `fetchNextPage`.
