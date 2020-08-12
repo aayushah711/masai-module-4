@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Card from './Card';
 
 const ListWrapper = styled.div`
 	/* border: 1px solid black; */
@@ -49,17 +50,17 @@ const ListHeaderNameAssist = styled.h2`
 
 const ListHeaderName = styled.input`
 	background: transparent;
-    border-radius: 3px;
-    box-shadow: none;
-    font-weight: 600;
-    margin: -4px 0;
-    min-height: 20px;
-    padding: 4px 8px;
-    max-height: 256px;
+	border-radius: 3px;
+	box-shadow: none;
+	font-weight: 600;
+	margin: -4px 0;
+	min-height: 20px;
+	padding: 4px 8px;
+	max-height: 256px;
 	resize: none;
 	overflow: hidden;
-    overflow-wrap: break-word;
-    height: 28px;
+	overflow-wrap: break-word;
+	height: 28px;
 	width: 92%;
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -123,8 +124,6 @@ const ListAnotherCard = styled.input`
 	padding: 10px;
 `;
 
-
-
 class List extends React.Component {
 	constructor(props) {
 		super(props);
@@ -134,9 +133,8 @@ class List extends React.Component {
 			newCard: false,
 			anotherCard: '',
 			renameList: false,
-			renamedList: this.props.name,
+			renamedList: this.props.name
 		};
-
 	}
 
 	addCard = () => {
@@ -151,37 +149,37 @@ class List extends React.Component {
 	};
 
 	handleCancel = () => {
-		this.setState({ newCard: false, anotherCard: "" });
-	}
+		this.setState({ newCard: false, anotherCard: '' });
+	};
 
 	handleSave = (event) => {
-		console.log(this.state.anotherCard)
-		this.props.updateData(this.props.id, this.state.anotherCard)
-		this.setState({ anotherCard: "" })
-	}
+		console.log(this.state.anotherCard);
+		this.props.updateData(this.props.id, this.state.anotherCard);
+		this.setState({ anotherCard: '' });
+	};
 
 	handleChange = (e) => {
-		const { name, value } = e.target
+		const { name, value } = e.target;
 		this.setState({
 			[name]: value
 		});
 	};
 
 	handleRename = (e) => {
-		this.setState({renameList: true});
-	}
+		this.setState({ renameList: true });
+	};
 
 	handleSaveList = () => {
-		this.props.updateListName(this.props.id, this.state.renamedList)
-		this.setState({renameList: false});
-	}
+		this.props.updateListName(this.props.id, this.state.renamedList);
+		this.setState({ renameList: false });
+	};
 
 	handleKeyDown = (e) => {
 		const { name } = this.state;
-		return e.key === "Enter" ?  this.handleSaveList() : 
-		e.key === "Escape" ? this.setState({ renameList: false, renamedList: name }) : null;
-	}
-
+		return e.key === 'Enter'
+			? this.handleSaveList()
+			: e.key === 'Escape' ? this.setState({ renameList: false, renamedList: name }) : null;
+	};
 
 	render() {
 		// console.log(this.state);
@@ -190,26 +188,30 @@ class List extends React.Component {
 		return (
 			<ListWrapper>
 				<ListContainer>
-					{renameList ? 
+					{renameList ? (
 						<ListHeader>
-							<ListHeaderName 
-									type="text" 
-									name="renamedList"
-									value={renamedList}
-									onChange={handleChange}
-									onKeyDown={handleKeyDown}
-								/>
-						</ListHeader> : 
-						<ListHeader
-							onClick={handleRename}>
+							<ListHeaderName
+								type="text"
+								name="renamedList"
+								value={renamedList}
+								onChange={handleChange}
+								onKeyDown={handleKeyDown}
+							/>
+						</ListHeader>
+					) : (
+						<ListHeader onClick={handleRename}>
 							<ListHeaderNameAssist>{name}</ListHeaderNameAssist>
 						</ListHeader>
-					}
+					)}
 					{data.map((card) => {
 						return (
-							<ListCards key={card.id} id={card.id}>
-								<ListCard>{card.name}</ListCard>
-							</ListCards>
+							<Card
+								key={card.id}
+								listId={this.props.id}
+								id={card.id}
+								name={card.name}
+								updateCardName={this.props.updateCardName}
+							/>
 						);
 					})}
 
