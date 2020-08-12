@@ -32,6 +32,10 @@ const ListContainer = styled.div`
 `;
 const ListHeader = styled.div`
 	margin: 0px 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	/* :hover {
 		opacity: 70%;
 		cursor: pointer;
@@ -43,6 +47,10 @@ const ListHeaderNameAssist = styled.h2`
 	line-height: 4px;
 	font-weight: 600;
 	padding: 10px 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	// border: 1px solid black;
 	margin-bottom: 12px;
 	margin-top: 10px;
@@ -190,10 +198,14 @@ class List extends React.Component {
 			: e.key === 'Escape' ? this.setState({ renameList: false, renamedList: name }) : null;
 	};
 
+	handleDeleteList = () => {
+		this.props.deleteList(this.props.id);
+	};
+
 	render() {
 		// console.log(this.state);
 		const { newCard, data, name, anotherCard, renameList, renamedList } = this.state;
-		const { handleChange, addCard, handleCancel, handleSave, handleRename, handleKeyDown } = this;
+		const { handleChange, addCard, handleCancel, handleSave, handleRename, handleKeyDown, handleDeleteList } = this;
 		return (
 			<ListWrapper>
 				<ListContainer>
@@ -209,7 +221,26 @@ class List extends React.Component {
 						</ListCards>
 					) : (
 						<ListHeader onClick={handleRename}>
-							<ListHeaderNameAssist>{name}</ListHeaderNameAssist>
+							<ListHeaderNameAssist>
+								{name}
+								{/* <span
+									style={{ width: '50px', height: '50px', border: 'red dashed' }}
+									onClick={handleDeleteList}
+								>
+									X
+								</span> */}
+							</ListHeaderNameAssist>
+							<i
+								class="fas fa-trash-alt"
+								style={{
+									width: '50px',
+									height: '100%',
+									cursor: 'pointer',
+									textAlign: 'right',
+									marginRight: '10px'
+								}}
+								onClick={handleDeleteList}
+							/>
 						</ListHeader>
 					)}
 					{data.map((card) => {

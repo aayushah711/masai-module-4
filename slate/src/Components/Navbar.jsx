@@ -121,7 +121,7 @@ const ChangeColourContainer = styled.div`
 	background-color: white;
 	position: relative;
 	top: 41px;
-	right: 0px;
+	right: -105px;
 	width: 272px;
 	background-color: #ebecf0;
 	border-radius: 3px;
@@ -130,9 +130,8 @@ const ChangeColourContainer = styled.div`
 	flex-direction: column;
 	position: relative;
 	white-space: normal;
-
+	z-index: 100;
 `;
-
 
 const ListCard = styled.a`
 	background-color: #fff;
@@ -180,8 +179,8 @@ class Navabar extends Component {
 	}
 
 	changeColor = (event) => {
-		this.setState({toggleColor: !this.state.toggleColor});
-	}
+		this.setState({ toggleColor: !this.state.toggleColor });
+	};
 
 	render() {
 		return (
@@ -200,22 +199,23 @@ class Navabar extends Component {
 				</LeftSection>
 				<Logo>Slate</Logo>
 				<RightSection>
-					{this.state.toggleColor ? 
-					<ChangeColourContainer style={{display: "block"}}>
-						<ColorHeader><span>Color</span><span onClick={() => this.changeColor()}>X</span></ColorHeader>
-						<ListCard style={{backgroundColor: "crimson"}}></ListCard>
-						<ListCard style={{backgroundColor: "lightblue"}}></ListCard>
-						<ListCard style={{backgroundColor: "gold"}}></ListCard>
-						<ListCard style={{backgroundColor: "green"}}></ListCard>
-					</ChangeColourContainer> : 
-					
-					<ChangeColourContainer style={{display: "none"}}>
-					
-					</ChangeColourContainer>
-					}
-					<SmallButton
-						onClick={this.changeColor}><i class="fas fa-palette"></i>
-						</SmallButton>
+					{this.state.toggleColor ? (
+						<ChangeColourContainer style={{ display: 'block' }}>
+							<ColorHeader>
+								<span>Color</span>
+								<span onClick={() => this.changeColor()}>X</span>
+							</ColorHeader>
+							<ListCard style={{ backgroundColor: 'crimson' }} />
+							<ListCard style={{ backgroundColor: 'lightblue' }} />
+							<ListCard style={{ backgroundColor: 'gold' }} />
+							<ListCard style={{ backgroundColor: 'green' }} />
+						</ChangeColourContainer>
+					) : (
+						<ChangeColourContainer style={{ display: 'none' }} />
+					)}
+					<SmallButton onClick={this.changeColor}>
+						<i class="fas fa-palette" />
+					</SmallButton>
 					<SmallButton className="gg-add-r">
 						<i class="fa fa-plus" aria-hidden="true" />
 					</SmallButton>

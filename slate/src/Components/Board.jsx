@@ -67,27 +67,43 @@ class Board extends React.Component {
 		);
 	};
 
-	render() {
+	deleteList = (id) => {
+		const newData = this.state.data;
+		newData.map((item, index) => {
+			if (item.id === id) {
+				delete newData[index];
+			}
+		});
 
+		this.setState(
+			{
+				data: newData
+			},
+			() => console.log(this.state)
+		);
+	};
+
+	render() {
 		const { data } = this.state;
 		return (
 			<div>
 				<Navbar />
-			<div>
-				{data.map((list) => {
-					return (
-						<List
-							key={list.id}
-							id={list.id}
-							name={list.name}
-							data={list.data}
-							updateData={this.updateData}
-							updateListName={this.updateListName}
-							updateCardName={this.updateCardName}
-						/>
-					);
-				})}
-			</div>
+				<div>
+					{data.map((list) => {
+						return (
+							<List
+								key={list.id}
+								id={list.id}
+								name={list.name}
+								data={list.data}
+								updateData={this.updateData}
+								updateListName={this.updateListName}
+								updateCardName={this.updateCardName}
+								deleteList={this.deleteList}
+							/>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}
