@@ -30,43 +30,15 @@ const ListContainer = styled.div`
 	position: relative;
 	white-space: normal;
 `;
-const ListHeader = styled.div`
-	flex: 0 0 auto;
-	// padding: 10px 8px;
-	margin: 0px 8px;
-	position: relative;
-	// min-height: 20px;
-	// margin-top: 15px;
-`;
+const ListHeader = styled.div`margin: 0px 8px;`;
 const ListHeaderNameAssist = styled.h2`
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: 600;
-	// margin: 0 0 8px;
-	margin-top: 10px;
-	padding: 0px 10px;
+	padding: 10px 10px;
 	// border: 1px solid black;
-`;
-
-const ListHeaderName = styled.input`
-	background: transparent;
-	border-radius: 3px;
-	box-shadow: none;
-	font-weight: 600;
-	margin: -4px 0;
-	min-height: 20px;
-	padding: 4px 8px;
-	max-height: 256px;
-	resize: none;
-	overflow: hidden;
-	overflow-wrap: break-word;
-	height: 28px;
-	width: 92%;
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 	margin-top: 10px;
-	font-size: 20px;
-	line-height: 24px;
-	font-weight: 600;
 `;
 
 const CardComposerContainer = styled.button`
@@ -116,12 +88,30 @@ const ListAnotherCard = styled.input`
 	cursor: pointer;
 	display: block;
 	margin-bottom: 8px;
-	max-width: 300px;
+	width: 91%;
 	min-height: 20px;
 	position: relative;
 	text-decoration: none;
 	z-index: 0;
 	padding: 10px;
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: 600;
+	margin-top: 10px;
+`;
+
+const addCancelCardWrapper = styled.button`
+	border: 1px solid black;
+	display: flex;
+	flex-direction: row;
+`;
+
+const AddCardButton = styled.button`
+	margin-left: 8px;
+	width: 84px;
+	height: 32px;
+	margin-bottom: 8px;
+	margin-right: 10px;
 `;
 
 class List extends React.Component {
@@ -189,15 +179,15 @@ class List extends React.Component {
 			<ListWrapper>
 				<ListContainer>
 					{renameList ? (
-						<ListHeader>
-							<ListHeaderName
+						<ListCards>
+							<ListAnotherCard
 								type="text"
 								name="renamedList"
 								value={renamedList}
 								onChange={handleChange}
 								onKeyDown={handleKeyDown}
 							/>
-						</ListHeader>
+						</ListCards>
 					) : (
 						<ListHeader onClick={handleRename}>
 							<ListHeaderNameAssist>{name}</ListHeaderNameAssist>
@@ -225,8 +215,31 @@ class List extends React.Component {
 									onChange={handleChange}
 								/>
 							</ListCards>
-							<button onClick={handleSave}>Save</button>
-							<button onClick={handleCancel}>Cancel</button>
+							<addCancelCardWrapper>
+								<AddCardButton
+									onClick={handleSave}
+									style={{
+										marginLeft: '8px',
+										float: 'left',
+										cursor: 'pointer'
+									}}
+								>
+									Add Card
+								</AddCardButton>
+
+								<h1
+									onClick={handleCancel}
+									style={{
+										float: 'left',
+										margin: '5px 0px',
+										fontWeight: 'normal',
+										fontSize: '25px',
+										cursor: 'pointer'
+									}}
+								>
+									X
+								</h1>
+							</addCancelCardWrapper>
 						</React.Fragment>
 					) : (
 						<CardComposerContainer onClick={addCard}>
