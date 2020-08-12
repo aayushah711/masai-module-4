@@ -107,8 +107,8 @@ class List extends React.Component {
 	}
 
 	addCard = () => {
-		console.log('adding card');
-		console.log(this.props.id);
+		// console.log('adding card');
+		// console.log(this.props.id);
 		const { newCard } = this.state;
 
 		this.setState(
@@ -134,6 +134,17 @@ class List extends React.Component {
 		// );
 	};
 
+	handleCancel = () => {
+		this.setState({ newCard: false, anotherCard: "" });
+	}
+
+	handleSave = (event) => {
+		console.log(this.state.anotherCard)
+		this.props.updateData(this.props.id, this.state.anotherCard)
+		this.setState({ anotherCard: "" })
+	}
+
+
 	handleChange = (e) => {
 		this.setState({
 			anotherCard: e.target.value
@@ -141,7 +152,7 @@ class List extends React.Component {
 	};
 
 	render() {
-		console.log(this.state);
+		// console.log(this.state);
 		const { newCard, data, name, anotherCard } = this.state;
 		return (
 			<ListWrapper>
@@ -167,8 +178,8 @@ class List extends React.Component {
 									onChange={this.handleChange}
 								/>
 							</ListCards>
-							<button>Save</button>
-							<button>Cancel</button>
+							<button onClick={this.handleSave}>Save</button>
+							<button onClick={this.handleCancel}>Cancel</button>
 						</React.Fragment>
 					) : (
 						<CardComposerContainer onClick={this.addCard}>
