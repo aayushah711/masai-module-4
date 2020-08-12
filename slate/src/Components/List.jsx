@@ -15,6 +15,7 @@ const ListWrapper = styled.div`
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: 400;
+	margin-top: 20px;
 `;
 
 const ListContainer = styled.div`
@@ -31,16 +32,42 @@ const ListContainer = styled.div`
 const ListHeader = styled.div`
 	flex: 0 0 auto;
 	// padding: 10px 8px;
+	margin: 0px 8px;
 	position: relative;
 	// min-height: 20px;
+	// margin-top: 15px;
 `;
-const ListHeaderName = styled.h2`
+const ListHeaderNameAssist = styled.h2`
 	font-size: 20px;
 	line-height: 24px;
 	font-weight: 600;
 	// margin: 0 0 8px;
+	margin-top: 10px;
 	padding: 0px 10px;
+	// border: 1px solid black;
 `;
+
+const ListHeaderName = styled.input`
+	background: transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    font-weight: 600;
+    margin: -4px 0;
+    min-height: 20px;
+    padding: 4px 8px;
+    max-height: 256px;
+	resize: none;
+	overflow: hidden;
+    overflow-wrap: break-word;
+    height: 28px;
+	width: 92%;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: 600;
+`;
+
 const CardComposerContainer = styled.button`
 	border: none;
 	margin: 8px;
@@ -95,6 +122,9 @@ const ListAnotherCard = styled.input`
 	z-index: 0;
 	padding: 10px;
 `;
+
+
+
 class List extends React.Component {
 	constructor(props) {
 		super(props);
@@ -102,13 +132,14 @@ class List extends React.Component {
 			name: this.props.name,
 			data: this.props.data,
 			newCard: false,
-			anotherCard: ''
+			anotherCard: '',
+			renameList: false,
+			renamedList: this.props.name,
 		};
+
 	}
 
 	addCard = () => {
-		// console.log('adding card');
-		// console.log(this.props.id);
 		const { newCard } = this.state;
 
 		this.setState(
@@ -117,21 +148,6 @@ class List extends React.Component {
 			},
 			() => console.log(this.state)
 		);
-
-		// const { data } = this.state;
-		// let obj = {
-		// 	id: 'item5',
-		// 	name: 'eggplant'
-		// };
-		// const newData = [ ...data ];
-		// newData.push(obj);
-
-		// this.setState(
-		// 	{
-		// 		data: newData
-		// 	},
-		// 	() => console.log(this.state)
-		// );
 	};
 
 	handleCancel = () => {
@@ -144,22 +160,51 @@ class List extends React.Component {
 		this.setState({ anotherCard: "" })
 	}
 
-
 	handleChange = (e) => {
+		const { name, value } = e.target
 		this.setState({
-			anotherCard: e.target.value
+			[name]: value
 		});
 	};
 
+	handleRename = (e) => {
+		this.setState({renameList: true});
+	}
+
+	handleSaveList = () => {
+		this.props.updateListName(this.props.id, this.state.renamedList)
+		this.setState({renameList: false});
+	}
+
+	handleKeyDown = (e) => {
+		const { name } = this.state;
+		return e.key === "Enter" ?  this.handleSaveList() : 
+		e.key === "Escape" ? this.setState({ renameList: false, renamedList: name }) : null;
+	}
+
+
 	render() {
 		// console.log(this.state);
-		const { newCard, data, name, anotherCard } = this.state;
+		const { newCard, data, name, anotherCard, renameList, renamedList } = this.state;
+		const { handleChange, addCard, handleCancel, handleSave, handleRename, handleKeyDown } = this;
 		return (
 			<ListWrapper>
 				<ListContainer>
-					<ListHeader>
-						<ListHeaderName>{name}</ListHeaderName>
-					</ListHeader>
+					{renameList ? 
+						<ListHeader>
+							<ListHeaderName 
+									type="text" 
+									name="renamedList"
+									value={renamedList}
+									onChange={handleChange}
+									onKeyDown={handleKeyDown}
+								/>
+						</ListHeader> : 
+						<ListHeader
+							onClick={handleRename}>
+							<ListHeaderNameAssist>{name}</ListHeaderNameAssist>
+						</ListHeader>
+					}
 					{data.map((card) => {
 						return (
 							<ListCards key={card.id} id={card.id}>
@@ -175,14 +220,14 @@ class List extends React.Component {
 									type="text"
 									name="anotherCard"
 									value={anotherCard}
-									onChange={this.handleChange}
+									onChange={handleChange}
 								/>
 							</ListCards>
-							<button onClick={this.handleSave}>Save</button>
-							<button onClick={this.handleCancel}>Cancel</button>
+							<button onClick={handleSave}>Save</button>
+							<button onClick={handleCancel}>Cancel</button>
 						</React.Fragment>
 					) : (
-						<CardComposerContainer onClick={this.addCard}>
+						<CardComposerContainer onClick={addCard}>
 							<i className="fa fa-plus" aria-hidden="true" />
 							<span style={{ marginLeft: '10px', fontSize: '18px' }}>Add another card</span>
 						</CardComposerContainer>
