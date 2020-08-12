@@ -1,0 +1,30 @@
+[
+	{
+		"id": "list1",
+		"name": "list1",
+		"data": [
+			{
+				"id": "item1",
+				"name": "apple"
+			},
+			{
+				"id": "item2",
+				"name": "banana"
+			}
+		]
+	},
+	{
+		"id": "list2",
+		"name": "list2",
+		"data": [
+			{
+				"id": "item3",
+				"name": "chicoo"
+			},
+			{
+				"id": "item4",
+				"name": "dragonfruit"
+			}
+		]
+	}
+]
