@@ -1,6 +1,7 @@
 import React from 'react';
 import List from './List.jsx';
 import data from '../data.json';
+import Navbar from './Navbar.jsx';
 
 class Board extends React.Component {
 	constructor(props) {
@@ -67,8 +68,11 @@ class Board extends React.Component {
 	};
 
 	render() {
+
 		const { data } = this.state;
 		return (
+			<div>
+				<Navbar />
 			<div>
 				{data.map((list) => {
 					return (
@@ -83,6 +87,7 @@ class Board extends React.Component {
 						/>
 					);
 				})}
+			</div>
 			</div>
 		);
 	}

@@ -5,7 +5,6 @@ import Card from './Card';
 const ListWrapper = styled.div`
 	/* border: 1px solid black; */
 	width: 272px;
-	margin: 0 4px;
 	height: 100%;
 	box-sizing: border-box;
 	display: inline-block;
@@ -16,7 +15,8 @@ const ListWrapper = styled.div`
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: 400;
-	margin-top: 20px;
+	margin: 10px;
+	margin-right:0px;
 `;
 
 const ListContainer = styled.div`
