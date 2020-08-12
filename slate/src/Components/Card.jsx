@@ -12,18 +12,32 @@ const ListCards = styled.div`
 	min-height: 0;
 `;
 
+const Pencil = styled.div`
+	opacity: 0%;
+	width: 400px;
+	text-align: right;
+	:hover {
+		opacity: 100%;
+		cursor: pointer;
+	}
+`;
+
 const ListCard = styled.a`
 	background-color: #fff;
 	border-radius: 3px;
 	box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
-	cursor: pointer;
 	display: block;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
 	margin-bottom: 8px;
 	max-width: 300px;
 	min-height: 20px;
 	position: relative;
 	text-decoration: none;
 	z-index: 0;
+	cursor: pointer;
 	padding: 10px;
 `;
 
@@ -34,12 +48,13 @@ const RenameCard = styled.input`
 	cursor: pointer;
 	display: block;
 	margin-bottom: 8px;
-	max-width: 300px;
-	min-height: 20px;
+	/* max-width: 300px; */
+	min-height: 10px;
 	position: relative;
 	text-decoration: none;
 	z-index: 0;
 	padding: 10px;
+	width: 92%;
 `;
 
 export default class Card extends Component {
@@ -81,13 +96,17 @@ export default class Card extends Component {
 						onKeyDown={handleKeyDown}
 					/>
 				) : (
-					<ListCard
-						onClick={() => {
-							console.log('inside rename card');
-							this.setState({ renameCard: true }, () => console.log('renaming'));
-						}}
-					>
+					<ListCard>
 						{name}
+						<Pencil>
+							<i
+								className="fas fa-pencil-alt"
+								onClick={() => {
+									console.log('inside rename card');
+									this.setState({ renameCard: true }, () => console.log('renaming'));
+								}}
+							/>
+						</Pencil>
 					</ListCard>
 				)}
 			</ListCards>

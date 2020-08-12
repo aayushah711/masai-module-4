@@ -16,7 +16,7 @@ const ListWrapper = styled.div`
 	line-height: 20px;
 	font-weight: 400;
 	margin: 10px;
-	margin-right:0px;
+	margin-right: 0px;
 `;
 
 const ListContainer = styled.div`
@@ -30,15 +30,23 @@ const ListContainer = styled.div`
 	position: relative;
 	white-space: normal;
 `;
-const ListHeader = styled.div`margin: 0px 8px;`;
+const ListHeader = styled.div`
+	margin: 0px 8px;
+	/* :hover {
+		opacity: 70%;
+		cursor: pointer;
+		background-color: #fff;
+	} */
+`;
 const ListHeaderNameAssist = styled.h2`
 	font-size: 20px;
-	line-height: 24px;
+	line-height: 4px;
 	font-weight: 600;
 	padding: 10px 10px;
 	// border: 1px solid black;
 	margin-bottom: 12px;
 	margin-top: 10px;
+	cursor: pointer;
 `;
 
 const CardComposerContainer = styled.button`
@@ -53,8 +61,9 @@ const CardComposerContainer = styled.button`
 	outline: none;
 
 	:hover {
+		opacity: 70%;
 		cursor: pointer;
-		background: #efeca0;
+		background-color: #fff;
 	}
 `;
 const ListCards = styled.div`
@@ -86,18 +95,19 @@ const ListAnotherCard = styled.input`
 	border-radius: 3px;
 	box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
 	cursor: pointer;
-	display: block;
-	margin-bottom: 8px;
-	width: 91%;
-	min-height: 20px;
+	/* display: block; */
+	width: 95%;
+	min-height: 0px;
 	position: relative;
 	text-decoration: none;
 	z-index: 0;
-	padding: 10px;
+	padding: 5px;
 	font-size: 20px;
-	line-height: 24px;
+	line-height: 4px;
 	font-weight: 600;
-	margin-top: 10px;
+	margin: 4px 0;
+	/* margin-top: 10px; */
+	/* margin-bottom: 8px; */
 `;
 
 const addCancelCardWrapper = styled.button`
@@ -112,6 +122,14 @@ const AddCardButton = styled.button`
 	height: 32px;
 	margin-bottom: 8px;
 	margin-right: 10px;
+	background-color: #5aac44;
+	color: white;
+	border: none;
+	font-weight: bold;
+	:hover {
+		opacity: 70%;
+		cursor: pointer;
+	}
 `;
 
 class List extends React.Component {
@@ -231,13 +249,14 @@ class List extends React.Component {
 									onClick={handleCancel}
 									style={{
 										float: 'left',
-										margin: '5px 0px',
+										margin: '2px 2px',
 										fontWeight: 'normal',
 										fontSize: '25px',
 										cursor: 'pointer'
+										// border: 'red dashed'
 									}}
 								>
-									X
+									x
 								</h1>
 							</addCancelCardWrapper>
 						</React.Fragment>
