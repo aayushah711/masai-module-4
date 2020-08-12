@@ -90,6 +90,7 @@ const ListCard = styled.a`
 	z-index: 0;
 	padding: 10px;
 `;
+
 const ListAnotherCard = styled.input`
 	background-color: #fff;
 	border-radius: 3px;

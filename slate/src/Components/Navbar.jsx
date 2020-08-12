@@ -39,6 +39,7 @@ const SmallButton = styled.button`
 	color: white;
 	border: none;
 	border-radius: 3px;
+	outline: none;
 
 	:hover {
 		opacity: 70%;
@@ -81,6 +82,7 @@ const BoardButton = styled.button`
 	color: white;
 	border: none;
 	border-radius: 3px;
+	outline: none;
 	:hover {
 		opacity: 70%;
 		cursor: pointer;
@@ -96,6 +98,7 @@ const SearchButton = styled.button`
 	border: none;
 	border-radius: 3px;
 	margin-left: 2px;
+	outline: none;
 	:hover {
 		opacity: 70%;
 		cursor: pointer;
@@ -112,13 +115,72 @@ const SearchButton = styled.button`
 	}
 `;
 
+const ChangeColourContainer = styled.div`
+	height: 400px;
+	// width: 200px;
+	background-color: white;
+	position: relative;
+	top: 41px;
+	right: 0px;
+	width: 272px;
+	background-color: #ebecf0;
+	border-radius: 3px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	white-space: normal;
+
+`;
+
+
+const ListCard = styled.a`
+	background-color: #fff;
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+	cursor: pointer;
+	display: block;
+	margin-bottom: 8px;
+	max-width: 300px;
+	min-height: 50px;
+	position: relative;
+	text-decoration: none;
+	z-index: 0;
+	padding: 10px;
+	margin: 10px;
+`;
+
+const ColorHeader = styled.div`
+	background-color: transparent;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-bottom: 8px;
+	max-width: 300px;
+	min-height: 20px;
+	position: relative;
+	text-decoration: none;
+	z-index: 0;
+	padding: 10px;
+	margin: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+`;
+
 const Input = styled.input`width: ;`;
 
 class Navabar extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			toggleColor: false
+		};
+	}
+
+	changeColor = (event) => {
+		this.setState({toggleColor: !this.state.toggleColor});
 	}
 
 	render() {
@@ -138,6 +200,22 @@ class Navabar extends Component {
 				</LeftSection>
 				<Logo>Slate</Logo>
 				<RightSection>
+					{this.state.toggleColor ? 
+					<ChangeColourContainer style={{display: "block"}}>
+						<ColorHeader><span>Color</span><span onClick={() => this.changeColor()}>X</span></ColorHeader>
+						<ListCard style={{backgroundColor: "crimson"}}></ListCard>
+						<ListCard style={{backgroundColor: "lightblue"}}></ListCard>
+						<ListCard style={{backgroundColor: "gold"}}></ListCard>
+						<ListCard style={{backgroundColor: "green"}}></ListCard>
+					</ChangeColourContainer> : 
+					
+					<ChangeColourContainer style={{display: "none"}}>
+					
+					</ChangeColourContainer>
+					}
+					<SmallButton
+						onClick={this.changeColor}><i class="fas fa-palette"></i>
+						</SmallButton>
 					<SmallButton className="gg-add-r">
 						<i class="fa fa-plus" aria-hidden="true" />
 					</SmallButton>
