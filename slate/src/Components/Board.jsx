@@ -7,7 +7,7 @@ class Board extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: data
+			data: data.board1
 		};
 	}
 
@@ -83,6 +83,26 @@ class Board extends React.Component {
 		);
 	};
 
+	deleteCard = (listId, cardId) => {
+		const newData = this.state.data;
+		newData.map((list, listIndex) => {
+			if (list.id === listId) {
+				list.data.map((card, index) => {
+					if (card.id === cardId) {
+						delete newData[listIndex]['data'][index];
+					}
+				});
+			}
+		});
+
+		this.setState(
+			{
+				data: newData
+			},
+			() => console.log(this.state)
+		);
+	};
+
 	render() {
 		const { data } = this.state;
 		return (
@@ -100,6 +120,7 @@ class Board extends React.Component {
 								updateListName={this.updateListName}
 								updateCardName={this.updateCardName}
 								deleteList={this.deleteList}
+								deleteCard={this.deleteCard}
 							/>
 						);
 					})}

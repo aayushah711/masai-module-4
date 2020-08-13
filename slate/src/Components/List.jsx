@@ -84,20 +84,20 @@ const ListCards = styled.div`
 	z-index: 1;
 	min-height: 0;
 `;
-const ListCard = styled.a`
-	background-color: #fff;
-	border-radius: 3px;
-	box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
-	cursor: pointer;
-	display: block;
-	margin-bottom: 8px;
-	max-width: 300px;
-	min-height: 20px;
-	position: relative;
-	text-decoration: none;
-	z-index: 0;
-	padding: 10px;
-`;
+// const ListCard = styled.a`
+// 	background-color: #fff;
+// 	border-radius: 3px;
+// 	box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+// 	cursor: pointer;
+// 	display: block;
+// 	margin-bottom: 8px;
+// 	max-width: 300px;
+// 	min-height: 20px;
+// 	position: relative;
+// 	text-decoration: none;
+// 	z-index: 0;
+// 	padding: 10px;
+// `;
 
 const ListAnotherCard = styled.input`
 	background-color: #fff;
@@ -119,11 +119,11 @@ const ListAnotherCard = styled.input`
 	/* margin-bottom: 8px; */
 `;
 
-const addCancelCardWrapper = styled.button`
-	border: 1px solid black;
-	display: flex;
-	flex-direction: row;
-`;
+// const addCancelCardWrapper = styled.button`
+// 	border: 1px solid black;
+// 	display: flex;
+// 	flex-direction: row;
+// `;
 
 const AddCardButton = styled.button`
 	margin-left: 8px;
@@ -251,6 +251,7 @@ class List extends React.Component {
 								id={card.id}
 								name={card.name}
 								updateCardName={this.props.updateCardName}
+								deleteCard={this.props.deleteCard}
 							/>
 						);
 					})}

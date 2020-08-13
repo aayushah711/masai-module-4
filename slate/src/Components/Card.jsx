@@ -4,11 +4,10 @@ import styled from 'styled-components';
 const ListCards = styled.div`
 	flex: 1 1 auto;
 	margin-bottom: 0;
-	overflow-y: auto;
-	overflow-x: hidden;
+	/* overflow-y: auto;
+	overflow-x: hidden; */
 	margin: 0 4px;
 	padding: 0 4px;
-	z-index: 1;
 	min-height: 0;
 `;
 
@@ -36,7 +35,6 @@ const ListCard = styled.a`
 	min-height: 20px;
 	position: relative;
 	text-decoration: none;
-	z-index: 0;
 	cursor: pointer;
 	padding: 10px;
 `;
@@ -57,13 +55,40 @@ const RenameCard = styled.input`
 	width: 92%;
 `;
 
+const InputContainer = styled.div`position: relative;`;
+
+const Options = styled.div`
+	background: transparent;
+	height: 100px;
+	width: 200px;
+	position: absolute;
+	right: -208px;
+	top: 0px;
+	z-index: 2;
+	/* border: red dashed; */
+`;
+
+const DeleteOption = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: black;
+	color: white;
+	opacity: 90%;
+	padding: 5px 10px;
+	margin-bottom: 5px;
+	border-radius: 3px;
+	width: fit-content;
+`;
+
 export default class Card extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			name: this.props.name,
 			renameCard: false,
-			renamedCard: this.props.name
+			renamedCard: this.props.name,
+			showOptions: true
 		};
 	}
 
@@ -82,32 +107,81 @@ export default class Card extends Component {
 	};
 
 	render() {
-		const { renameCard, renamedCard, name } = this.state;
+		const { renameCard, renamedCard, name, showOptions } = this.state;
 		const { handleChange, handleKeyDown } = this;
-		console.log(renameCard);
 		return (
 			<ListCards>
 				{renameCard ? (
-					<RenameCard
-						type="text"
-						name="renamedCard"
-						value={renamedCard}
-						onChange={handleChange}
-						onKeyDown={handleKeyDown}
-					/>
+					<InputContainer>
+						<RenameCard
+							type="text"
+							name="renamedCard"
+							value={renamedCard}
+							onChange={handleChange}
+							onKeyDown={handleKeyDown}
+						/>
+						<Options>
+							<DeleteOption>
+								<span>
+									<i
+										class="fas fa-trash-alt"
+										style={{
+											height: '100%',
+											cursor: 'pointer',
+											marginRight: '10px'
+										}}
+										onClick={() => {
+											this.props.deleteCard(this.props.listId, this.props.id);
+										}}
+									/>
+								</span>
+								<span>Delete</span>
+							</DeleteOption>
+							<DeleteOption>
+								<span>
+									<i
+										class="fas fa-trash-alt"
+										style={{
+											height: '100%',
+											cursor: 'pointer',
+											marginRight: '10px'
+										}}
+									/>
+								</span>
+								<span>Change Due date</span>
+							</DeleteOption>
+							<DeleteOption>
+								<span>
+									<i
+										class="fas fa-trash-alt"
+										style={{
+											height: '100%',
+											cursor: 'pointer',
+											marginRight: '10px'
+										}}
+									/>
+								</span>
+								<span>Copy</span>
+							</DeleteOption>
+						</Options>
+					</InputContainer>
 				) : (
-					<ListCard>
-						{name}
-						<Pencil>
-							<i
-								className="fas fa-pencil-alt"
-								onClick={() => {
-									console.log('inside rename card');
-									this.setState({ renameCard: true }, () => console.log('renaming'));
-								}}
-							/>
-						</Pencil>
-					</ListCard>
+					<React.Fragment>
+						<ListCard>
+							{name}
+							<Pencil>
+								<i
+									className="fas fa-pencil-alt"
+									onClick={() => {
+										console.log('inside rename card');
+										this.setState({ renameCard: true, showOptions: true }, () =>
+											console.log('renaming')
+										);
+									}}
+								/>
+							</Pencil>
+						</ListCard>
+					</React.Fragment>
 				)}
 			</ListCards>
 		);
