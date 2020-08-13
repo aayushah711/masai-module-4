@@ -221,7 +221,7 @@ class Navabar extends Component {
 						<i class="fas fa-palette" />
 					</SmallButton>
 					<SmallButton className="gg-add-r">
-						<i class="fa fa-plus" aria-hidden="true" />
+						<i class="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
 					</SmallButton>
 					<Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQHCm80Shzkvsg/profile-displayphoto-shrink_400_400/0?e=1602720000&v=beta&t=HjjGVtjYNxp3b3ZC4IEqUpQL_SNqBGhD7cqmbVP0Jb8" />
 				</RightSection>

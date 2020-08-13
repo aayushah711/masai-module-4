@@ -67,6 +67,23 @@ class Board extends React.Component {
 		);
 	};
 
+	addList = () => {
+		console.log('adding list');
+		const newData = this.state.data;
+		const payload = {
+			id: Date.now(),
+			name: false,
+			data: []
+		};
+		newData.push(payload);
+		this.setState(
+			{
+				data: newData
+			},
+			() => console.log(this.state)
+		);
+	};
+
 	deleteList = (id) => {
 		const newData = this.state.data;
 		newData.map((item, index) => {
@@ -108,7 +125,7 @@ class Board extends React.Component {
 		const { data } = this.state;
 		return (
 			<div>
-				<Navbar />
+				<Navbar addList={this.addList} />
 				<div>
 					{data.map((list) => {
 						return (
