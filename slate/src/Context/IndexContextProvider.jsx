@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import Retrieve from './Components/Retrieve';
-import CreateList from './Components/Create';
-import Board from './Components/Board';
 
-class App extends Component {
+export const IndexContext = React.createContext();
+
+class IndexContextProvider extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -28,11 +26,11 @@ class App extends Component {
 		const { isDark } = this.state;
 		const { toggleDark, toggleLight } = this;
 		return (
-			<div className="App">
-				<Board theme={{ isDark, toggleDark, toggleLight }} />
-			</div>
+			<IndexContext.Provider value={{ isDark, toggleDark, toggleLight }}>
+				{this.props.children}
+			</IndexContext.Provider>
 		);
 	}
 }
 
-export default App;
+export default IndexContextProvider;

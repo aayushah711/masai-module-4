@@ -8,7 +8,8 @@ const Wrapper = styled.div`
 	flex-direction: row;
 	align-items: center;
 	position: relative;
-	background-color: #2d7219;
+	/* background-color: #2d7219; */
+	background-color: rgb(45, 114, 25);
 	padding: 5px;
 `;
 
@@ -35,7 +36,8 @@ const SmallButton = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	background-color: #5aac44;
+	/* background-color: #5aac44; */
+	background-color: rgb(90, 172, 68);
 	color: white;
 	border: none;
 	border-radius: 3px;
@@ -79,6 +81,7 @@ const BoardButton = styled.button`
 	align-items: center;
 	justify-content: space-around;
 	background-color: #5aac44;
+	background-color: rgb(90, 172, 68);
 	color: white;
 	border: none;
 	border-radius: 3px;
@@ -94,6 +97,7 @@ const SearchButton = styled.button`
 	width: 180px;
 	text-align: right;
 	background-color: #5aac44;
+	background-color: rgb(90, 172, 68);
 	color: white;
 	border: none;
 	border-radius: 3px;

@@ -21,7 +21,8 @@ const ListWrapper = styled.div`
 
 const ListContainer = styled.div`
 	/* border: 1px solid black; */
-	background-color: #ebecf0;
+	/* background-color: #ebecf0; */
+	background-color: rgb(235, 237, 240);
 	border-radius: 3px;
 	box-sizing: border-box;
 	display: flex;
@@ -252,6 +253,7 @@ class List extends React.Component {
 								name={card.name}
 								updateCardName={this.props.updateCardName}
 								deleteCard={this.props.deleteCard}
+								theme={this.props.theme}
 							/>
 						);
 					})}

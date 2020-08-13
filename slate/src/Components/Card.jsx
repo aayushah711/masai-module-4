@@ -40,7 +40,7 @@ const ListCard = styled.a`
 `;
 
 const RenameCard = styled.input`
-	background-color: #fff;
+	background-color: rgb(255, 255, 255);
 	border-radius: 3px;
 	box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
 	cursor: pointer;
@@ -74,7 +74,7 @@ const DeleteOption = styled.div`
 	align-items: center;
 	background: black;
 	color: white;
-	opacity: 90%;
+	opacity: 100% !important;
 	padding: 5px 10px;
 	margin-bottom: 5px;
 	border-radius: 3px;

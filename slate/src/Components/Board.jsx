@@ -104,6 +104,7 @@ class Board extends React.Component {
 	};
 
 	render() {
+		console.log(this.props);
 		const { data } = this.state;
 		return (
 			<div>
@@ -121,6 +122,7 @@ class Board extends React.Component {
 								updateCardName={this.updateCardName}
 								deleteList={this.deleteList}
 								deleteCard={this.deleteCard}
+								theme={this.props.theme}
 							/>
 						);
 					})}
