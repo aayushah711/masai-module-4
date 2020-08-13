@@ -126,14 +126,14 @@ class Board extends React.Component {
 		const { data } = this.state;
 		return (
 			<div>
-				<Navbar theme={this.props.theme} />
+				<Navbar theme={this.props.theme} addList={this.addList} />
 				<div>
 					{data.map((list) => {
 						return (
 							<List
 								key={list.id}
 								id={list.id}
-								name={list.name}
+								name={list.name ? list.name : ''}
 								data={list.data}
 								updateData={this.updateData}
 								updateListName={this.updateListName}
@@ -141,6 +141,7 @@ class Board extends React.Component {
 								deleteList={this.deleteList}
 								deleteCard={this.deleteCard}
 								theme={this.props.theme}
+								renameList={list.name ? false : true}
 							/>
 						);
 					})}
