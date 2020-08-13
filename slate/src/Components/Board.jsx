@@ -48,6 +48,7 @@ class Board extends React.Component {
 
 	updateCardName = (listId, cardId, cardName) => {
 		const newData = this.state.data;
+		this.props.theme.toggleLight();
 		newData.map((list) => {
 			if (list.id === listId) {
 				list.data.map((card) => {
@@ -108,7 +109,7 @@ class Board extends React.Component {
 		const { data } = this.state;
 		return (
 			<div>
-				<Navbar />
+				<Navbar theme={this.props.theme}/>
 				<div>
 					{data.map((list) => {
 						return (
