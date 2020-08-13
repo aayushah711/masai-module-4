@@ -28,9 +28,18 @@ class App extends Component {
 		const { isDark } = this.state;
 		const { toggleDark, toggleLight } = this;
 		return (
-			<div className="App">
-				<Board theme={{ isDark, toggleDark, toggleLight }} />
-			</div>
+			<>
+			{isDark ? 
+					<div className="App"
+						style={{background: "rgb(81, 152, 58, 0.5)"}}>
+					<Board theme={{ isDark, toggleDark, toggleLight }} />
+					</div> : 
+				<div className="App"
+					style={{background: "rgb(81, 152, 58)"}}>
+					<Board theme={{ isDark, toggleDark, toggleLight }} />
+				</div>
+			}
+			</>
 		);
 	}
 }

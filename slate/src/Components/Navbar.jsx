@@ -171,8 +171,6 @@ const ColorHeader = styled.div`
 	align-items: center;
 `;
 
-const Input = styled.input`width: ;`;
-
 class Navabar extends Component {
 	constructor(props) {
 		super(props);
@@ -187,45 +185,89 @@ class Navabar extends Component {
 	};
 
 	render() {
+		console.log('theme', this.props.theme);
 		return (
-			<Wrapper>
-				<LeftSection>
-					<SmallButton>
-						<i class="fa fa-home" aria-hidden="true" />
-					</SmallButton>
-					<BoardButton>
-						<i class="fa fa-list-alt" aria-hidden="true" />
-						<span style={{ fontSize: '18px' }}>Board</span>
-					</BoardButton>
-					<SearchButton>
-						<i class="fa fa-search" aria-hidden="true" />
-					</SearchButton>
-				</LeftSection>
-				<Logo>Slate</Logo>
-				<RightSection>
-					{this.state.toggleColor ? (
-						<ChangeColourContainer style={{ display: 'block' }}>
-							<ColorHeader>
-								<span>Color</span>
-								<span onClick={() => this.changeColor()}>X</span>
-							</ColorHeader>
-							<ListCard style={{ backgroundColor: 'crimson' }} />
-							<ListCard style={{ backgroundColor: 'lightblue' }} />
-							<ListCard style={{ backgroundColor: 'gold' }} />
-							<ListCard style={{ backgroundColor: 'green' }} />
-						</ChangeColourContainer>
-					) : (
-						<ChangeColourContainer style={{ display: 'none' }} />
-					)}
-					<SmallButton onClick={this.changeColor}>
-						<i class="fas fa-palette" />
-					</SmallButton>
-					<SmallButton className="gg-add-r">
-						<i class="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
-					</SmallButton>
-					<Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQHCm80Shzkvsg/profile-displayphoto-shrink_400_400/0?e=1602720000&v=beta&t=HjjGVtjYNxp3b3ZC4IEqUpQL_SNqBGhD7cqmbVP0Jb8" />
-				</RightSection>
-			</Wrapper>
+			<React.Fragment>
+				{this.props.theme.isDark ? (
+					<Wrapper style={{ backgroundColor: ' rgb(45, 114, 25, 0.5)' }}>
+						<LeftSection>
+							<SmallButton>
+								<i class="fa fa-home" aria-hidden="true" />
+							</SmallButton>
+							<BoardButton>
+								<i class="fa fa-list-alt" aria-hidden="true" />
+								<span style={{ fontSize: '18px' }}>Board</span>
+							</BoardButton>
+							<SearchButton>
+								<i class="fa fa-search" aria-hidden="true" />
+							</SearchButton>
+						</LeftSection>
+						<Logo>Slate</Logo>
+						<RightSection>
+							{this.state.toggleColor ? (
+								<ChangeColourContainer style={{ display: 'block' }}>
+									<ColorHeader>
+										<span>Color</span>
+										<span onClick={() => this.changeColor()}>X</span>
+									</ColorHeader>
+									<ListCard style={{ backgroundColor: 'crimson' }} />
+									<ListCard style={{ backgroundColor: 'lightblue' }} />
+									<ListCard style={{ backgroundColor: 'gold' }} />
+									<ListCard style={{ backgroundColor: 'green' }} />
+								</ChangeColourContainer>
+							) : (
+								<ChangeColourContainer style={{ display: 'none' }} />
+							)}
+							<SmallButton onClick={this.changeColor}>
+								<i class="fas fa-palette" />
+							</SmallButton>
+							<SmallButton className="gg-add-r">
+								<i class="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
+							</SmallButton>
+							<Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQHCm80Shzkvsg/profile-displayphoto-shrink_400_400/0?e=1602720000&v=beta&t=HjjGVtjYNxp3b3ZC4IEqUpQL_SNqBGhD7cqmbVP0Jb8" />
+						</RightSection>
+					</Wrapper>
+				) : (
+					<Wrapper style={{ backgroundColor: ' rgb(45, 114, 25, 0.5)' }}>
+						<LeftSection>
+							<SmallButton>
+								<i class="fa fa-home" aria-hidden="true" />
+							</SmallButton>
+							<BoardButton>
+								<i class="fa fa-list-alt" aria-hidden="true" />
+								<span style={{ fontSize: '18px' }}>Board</span>
+							</BoardButton>
+							<SearchButton>
+								<i class="fa fa-search" aria-hidden="true" />
+							</SearchButton>
+						</LeftSection>
+						<Logo>Slate</Logo>
+						<RightSection>
+							{this.state.toggleColor ? (
+								<ChangeColourContainer style={{ display: 'block' }}>
+									<ColorHeader>
+										<span>Color</span>
+										<span onClick={() => this.changeColor()}>X</span>
+									</ColorHeader>
+									<ListCard style={{ backgroundColor: 'crimson' }} />
+									<ListCard style={{ backgroundColor: 'lightblue' }} />
+									<ListCard style={{ backgroundColor: 'gold' }} />
+									<ListCard style={{ backgroundColor: 'green' }} />
+								</ChangeColourContainer>
+							) : (
+								<ChangeColourContainer style={{ display: 'none' }} />
+							)}
+							<SmallButton onClick={this.changeColor}>
+								<i class="fas fa-palette" />
+							</SmallButton>
+							<SmallButton className="gg-add-r">
+								<i class="fa fa-plus" aria-hidden="true" />
+							</SmallButton>
+							<Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQHCm80Shzkvsg/profile-displayphoto-shrink_400_400/0?e=1602720000&v=beta&t=HjjGVtjYNxp3b3ZC4IEqUpQL_SNqBGhD7cqmbVP0Jb8" />
+						</RightSection>
+					</Wrapper>
+				)}
+			</React.Fragment>
 		);
 	}
 }

@@ -22,7 +22,7 @@ const ListWrapper = styled.div`
 const ListContainer = styled.div`
 	/* border: 1px solid black; */
 	/* background-color: #ebecf0; */
-	background-color: rgb(235, 237, 240);
+	// background-color: rgb(235, 237, 240);
 	border-radius: 3px;
 	box-sizing: border-box;
 	display: flex;
@@ -209,7 +209,103 @@ class List extends React.Component {
 		const { handleChange, addCard, handleCancel, handleSave, handleRename, handleKeyDown, handleDeleteList } = this;
 		return (
 			<ListWrapper>
-				<ListContainer>
+				{this.props.theme.isDark ? 
+				<ListContainer style={{backgroundColor:"rgb(235, 237, 240, 0.8)"}}>
+					{renameList ? (
+						<ListCards>
+							<ListAnotherCard
+								type="text"
+								name="renamedList"
+								value={renamedList}
+								onChange={handleChange}
+								onKeyDown={handleKeyDown}
+							/>
+						</ListCards>
+					) : (
+						<ListHeader onClick={handleRename}>
+							<ListHeaderNameAssist>
+								{name}
+								{/* <span
+									style={{ width: '50px', height: '50px', border: 'red dashed' }}
+									onClick={handleDeleteList}
+								>
+									X
+								</span> */}
+							</ListHeaderNameAssist>
+							<i
+								class="fas fa-trash-alt"
+								style={{
+									width: '50px',
+									height: '100%',
+									cursor: 'pointer',
+									textAlign: 'right',
+									marginRight: '10px'
+								}}
+								onClick={handleDeleteList}
+							/>
+						</ListHeader>
+					)}
+					{data.map((card) => {
+						return (
+							<Card
+								key={card.id}
+								listId={this.props.id}
+								id={card.id}
+								name={card.name}
+								updateCardName={this.props.updateCardName}
+								deleteCard={this.props.deleteCard}
+								theme={this.props.theme}
+							/>
+						);
+					})}
+
+					{newCard ? (
+						<React.Fragment>
+							<ListCards>
+								<ListAnotherCard
+									type="text"
+									name="anotherCard"
+									value={anotherCard}
+									onChange={handleChange}
+								/>
+							</ListCards>
+							<addCancelCardWrapper>
+								<AddCardButton
+									onClick={handleSave}
+									style={{
+										marginLeft: '8px',
+										float: 'left',
+										cursor: 'pointer'
+									}}
+								>
+									Add Card
+								</AddCardButton>
+
+								<h1
+									onClick={handleCancel}
+									style={{
+										float: 'left',
+										margin: '2px 2px',
+										fontWeight: 'normal',
+										fontSize: '25px',
+										cursor: 'pointer'
+										// border: 'red dashed'
+									}}
+								>
+									x
+								</h1>
+							</addCancelCardWrapper>
+						</React.Fragment>
+					) : (
+						<CardComposerContainer onClick={addCard}>
+							<i className="fa fa-plus" aria-hidden="true" />
+							<span style={{ marginLeft: '10px', fontSize: '18px' }}>Add another card</span>
+						</CardComposerContainer>
+					)}
+				</ListContainer> :
+
+				
+				<ListContainer style={{backgroundColor:"rgb(235, 237, 240)"}}>
 					{renameList ? (
 						<ListCards>
 							<ListAnotherCard
@@ -302,6 +398,7 @@ class List extends React.Component {
 						</CardComposerContainer>
 					)}
 				</ListContainer>
+			}
 			</ListWrapper>
 		);
 	}

@@ -101,12 +101,19 @@ export default class Card extends Component {
 
 	handleKeyDown = (e) => {
 		const { name, renamedCard } = this.state;
-		return e.key === 'Enter'
-			? this.props.updateCardName(this.props.listId, this.props.id, renamedCard)
-			: e.key === 'Escape' ? this.setState({ renameCard: false, renamedCard: name }) : null;
+		if (e.key === 'Enter') {
+			this.props.updateCardName(this.props.listId, this.props.id, renamedCard)
+		} else {
+
+			if (e.key === 'Escape') {
+				this.setState({ renameCard: false, renamedCard: name })
+				this.props.theme.toggleLight()
+			}
+		}
 	};
 
 	render() {
+		console.log(this.props.theme)
 		const { renameCard, renamedCard, name, showOptions } = this.state;
 		const { handleChange, handleKeyDown } = this;
 		return (
@@ -174,6 +181,7 @@ export default class Card extends Component {
 									className="fas fa-pencil-alt"
 									onClick={() => {
 										console.log('inside rename card');
+										this.props.theme.toggleDark()
 										this.setState({ renameCard: true, showOptions: true }, () =>
 											console.log('renaming')
 										);
