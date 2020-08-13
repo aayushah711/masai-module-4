@@ -2,6 +2,20 @@ import React from 'react';
 import List from './List.jsx';
 import data from '../data.json';
 import Navbar from './Navbar.jsx';
+import styled from 'styled-components';
+
+const Scroll = styled.div`
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	overflow-x: scroll;
+	
+	::-webkit-scrollbar {
+    width: 0px;  
+    background: transparent; 
+	}
+
+`;
 
 class Board extends React.Component {
 	constructor(props) {
@@ -133,7 +147,7 @@ class Board extends React.Component {
 		return (
 			<div>
 				<Navbar theme={this.props.theme} addList={this.addList} />
-				<div>
+				<Scroll>
 					{data.map((list) => {
 						return (
 							<List
@@ -151,7 +165,7 @@ class Board extends React.Component {
 							/>
 						);
 					})}
-				</div>
+				</Scroll>
 			</div>
 		);
 	}

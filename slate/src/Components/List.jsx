@@ -17,6 +17,7 @@ const ListWrapper = styled.div`
 	font-weight: 400;
 	margin: 10px;
 	margin-right: 0px;
+	flex: 0 0 272px;
 `;
 
 const ListContainer = styled.div`
