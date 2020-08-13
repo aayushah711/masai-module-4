@@ -189,7 +189,7 @@ class Navabar extends Component {
 				{this.props.theme.isDark ? (
 					<Wrapper style={{ backgroundColor: ' rgb(45, 114, 25, 0.5)' }}>
 						<LeftSection>
-							<SmallButton>
+							<SmallButton onClick={this.props.theme.showHompage}>
 								<i className="fa fa-home" aria-hidden="true" />
 							</SmallButton>
 							<BoardButton>
@@ -228,7 +228,7 @@ class Navabar extends Component {
 				) : (
 					<Wrapper style={{ backgroundColor: ' rgb(45, 114, 25, 0.5)' }}>
 						<LeftSection>
-							<SmallButton>
+							<SmallButton onClick={this.props.theme.showHompage}>
 								<i className="fa fa-home" aria-hidden="true" />
 							</SmallButton>
 							<BoardButton>

@@ -129,7 +129,7 @@ export default class Card extends Component {
 							<DeleteOption>
 								<span>
 									<i
-										class="fas fa-trash-alt"
+										class="far fa-trash-alt"
 										style={{
 											height: '100%',
 											cursor: 'pointer',
@@ -145,7 +145,7 @@ export default class Card extends Component {
 							<DeleteOption>
 								<span>
 									<i
-										class="fas fa-trash-alt"
+										class="far fa-clock"
 										style={{
 											height: '100%',
 											cursor: 'pointer',
@@ -158,7 +158,7 @@ export default class Card extends Component {
 							<DeleteOption>
 								<span>
 									<i
-										class="fas fa-trash-alt"
+										class="far fa-copy"
 										style={{
 											height: '100%',
 											cursor: 'pointer',

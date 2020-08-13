@@ -3,18 +3,18 @@ import List from './List.jsx';
 import data from '../data.json';
 import Navbar from './Navbar.jsx';
 import styled from 'styled-components';
+import Homepage from './Homepage';
 
 const Scroll = styled.div`
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	overflow-x: scroll;
-	
-	::-webkit-scrollbar {
-    width: 0px;  
-    background: transparent; 
-	}
 
+	::-webkit-scrollbar {
+		width: 0px;
+		background: transparent;
+	}
 `;
 
 class Board extends React.Component {
@@ -143,10 +143,11 @@ class Board extends React.Component {
 	};
 
 	render() {
-		const { data } = this.state;
+		const { data, homepage } = this.state;
 		return (
 			<div>
-				<Navbar theme={this.props.theme} addList={this.addList} />
+				<Navbar theme={this.props.theme} addList={this.addList} showHompage={this.props.theme.showHompage} />
+
 				<Scroll>
 					{data.map((list) => {
 						return (
