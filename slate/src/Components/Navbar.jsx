@@ -200,7 +200,7 @@ class Navabar extends Component {
 								<i className="fa fa-search" aria-hidden="true" />
 							</SearchButton>
 						</LeftSection>
-						<Logo>Slate</Logo>
+						<Logo>Mrello</Logo>
 						<RightSection>
 							{this.state.toggleColor ? (
 								<ChangeColourContainer style={{ display: 'block' }}>
@@ -239,7 +239,7 @@ class Navabar extends Component {
 								<i className="fa fa-search" aria-hidden="true" />
 							</SearchButton>
 						</LeftSection>
-						<Logo>Slate</Logo>
+						<Logo>Mrello</Logo>
 						<RightSection>
 							{this.state.toggleColor ? (
 								<ChangeColourContainer style={{ display: 'block' }}>

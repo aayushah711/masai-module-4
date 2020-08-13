@@ -13,7 +13,7 @@ const ListCards = styled.div`
 
 const Pencil = styled.div`
 	opacity: 0%;
-	width: 400px;
+	max-width: 400px;
 	text-align: right;
 	:hover {
 		opacity: 100%;

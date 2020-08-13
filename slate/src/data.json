@@ -1,32 +1,125 @@
 {
 	"board1": [
 		{
-			"id": "list1",
-			"name": "list1",
+			"id": "DS1",
+			"name": "DS",
 			"data": [
 				{
 					"id": "item1",
-					"name": "apple"
+					"name": "Think of real life examples for greedy"
 				},
 				{
 					"id": "item2",
-					"name": "banana"
+					"name": "Write bubble sort"
+				},
+				{
+					"id": "itemA",
+					"name": "You and Amazing sets"
+				},
+				{
+					"id": "itemB",
+					"name": "Masai Range"
 				}
 			]
 		},
 		{
-			"id": "list2",
-			"name": "list2",
+			"id": "React",
+			"name": "React",
 			"data": [
 				{
 					"id": "item3",
-					"name": "chicoo"
+					"name": "Explain life cycle methods"
 				},
 				{
 					"id": "item4",
-					"name": "dragonfruit"
+					"name": "Read about event propogation"
+				},
+				{
+					"id": "item5",
+					"name": "Images Forms (Optional)"
+				},
+				{
+					"id": "item6",
+					"name": "Comments (Optional)"
+				},
+				{
+					"id": "item7",
+					"name": "Login Register"
+				},
+				{
+					"id": "item8",
+					"name": "Credit Card Form"
+				},
+				{
+					"id": "item9",
+					"name": "PIN Component"
+				}
+			]
+		},
+		{
+			"id": "toRead",
+			"name": "To Read",
+			"data": [
+				{
+					"id": "item10",
+					"name": "article on ascend hbr"
+				},
+				{
+					"id": "item11",
+					"name": "Read 2 articles on painting the dom"
+				},
+				{
+					"id": "item12",
+					"name": "Main conceptes in react"
+				}
+			]
+		},
+		{
+			"id": "dsEval",
+			"name": "Ds Eval Revision",
+			"data": [
+				{
+					"id": "item13",
+					"name": "Angry Employees"
+				},
+				{
+					"id": "item14",
+					"name": "merge sort"
+				},
+				{
+					"id": "item15",
+					"name": "nick & hacks"
+				},
+				{
+					"id": "item16",
+					"name": "Wood cutter"
+				},
+				{
+					"id": "item17",
+					"name": "upper bound lower bound"
+				},
+				{
+					"id": "item18",
+					"name": "Hostel & Warden"
+				},
+				{
+					"id": "item19",
+					"name": "Neelam's Journey"
+				},
+				{
+					"id": "item20",
+					"name": "Addition, Subtraction and its Cost spent a lot of time on it"
+				},
+				{
+					"id": "item21",
+					"name": "small neighbor element"
+				},
+				{
+					"id": "item22",
+					"name": "quick sort"
 				}
 			]
 		}
+
 	]
 }
