@@ -2,6 +2,7 @@ import Airtable from 'airtable';
 
 const Retrieve = () => {
 	var base = new Airtable({ apiKey: process.env.REACT_APP_API_KEY }).base(process.env.REACT_APP_BASE);
+	var data;
 
 	base('table1')
 		.select({
@@ -11,18 +12,7 @@ const Retrieve = () => {
 		})
 		.eachPage(
 			function page(records, fetchNextPage) {
-				// This function (`page`) will get called for each page of records.
-
-				records.forEach(function(record) {
-					console.log('Retrieved', record.get('Name'));
-					console.log('Retrieved', record.get('Category'));
-					console.log('Retrieved', record.getId());
-				});
-
-				// To fetch the next page of records, call `fetchNextPage`.
-				// If there are more records, `page` will get called again.
-				// If there are no more records, `done` will get called.
-				fetchNextPage();
+				data = records[0].get('Name');
 			},
 			function done(err) {
 				if (err) {
@@ -31,6 +21,7 @@ const Retrieve = () => {
 				}
 			}
 		);
+	return data;
 };
 
 export default Retrieve;

@@ -156,8 +156,6 @@ class List extends React.Component {
 	}
 
 	addCard = () => {
-		const { newCard } = this.state;
-
 		this.setState(
 			{
 				newCard: true
@@ -233,7 +231,7 @@ class List extends React.Component {
 								</span> */}
 								</ListHeaderNameAssist>
 								<i
-									class="fas fa-trash-alt"
+									className="fas fa-trash-alt"
 									style={{
 										width: '50px',
 										height: '100%',
@@ -327,7 +325,7 @@ class List extends React.Component {
 								</span> */}
 								</ListHeaderNameAssist>
 								<i
-									class="fas fa-trash-alt"
+									className="fas fa-trash-alt"
 									style={{
 										width: '50px',
 										height: '100%',

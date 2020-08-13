@@ -22,6 +22,7 @@ class Board extends React.Component {
 			if (item.id === id) {
 				item.data.push(obj);
 			}
+			return item;
 		});
 
 		this.setState({
@@ -36,6 +37,7 @@ class Board extends React.Component {
 				item.name = name;
 				item.id = Date.now();
 			}
+			return item;
 		});
 
 		this.setState(
@@ -56,8 +58,10 @@ class Board extends React.Component {
 						card.name = cardName;
 						card.id = Date.now();
 					}
+					return card;
 				});
 			}
+			return list;
 		});
 
 		this.setState(
@@ -91,6 +95,7 @@ class Board extends React.Component {
 			if (item.id === id) {
 				delete newData[index];
 			}
+			return item;
 		});
 
 		this.setState(
@@ -109,8 +114,10 @@ class Board extends React.Component {
 					if (card.id === cardId) {
 						delete newData[listIndex]['data'][index];
 					}
+					return card;
 				});
 			}
+			return list;
 		});
 
 		this.setState(
@@ -122,7 +129,6 @@ class Board extends React.Component {
 	};
 
 	render() {
-		console.log(this.props);
 		const { data } = this.state;
 		return (
 			<div>

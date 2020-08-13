@@ -42,7 +42,6 @@ const SmallButton = styled.button`
 	border: none;
 	border-radius: 3px;
 	outline: none;
-
 	:hover {
 		opacity: 70%;
 		cursor: pointer;
@@ -185,21 +184,20 @@ class Navabar extends Component {
 	};
 
 	render() {
-		console.log('theme', this.props.theme);
 		return (
 			<React.Fragment>
 				{this.props.theme.isDark ? (
 					<Wrapper style={{ backgroundColor: ' rgb(45, 114, 25, 0.5)' }}>
 						<LeftSection>
 							<SmallButton>
-								<i class="fa fa-home" aria-hidden="true" />
+								<i className="fa fa-home" aria-hidden="true" />
 							</SmallButton>
 							<BoardButton>
-								<i class="fa fa-list-alt" aria-hidden="true" />
+								<i className="fa fa-list-alt" aria-hidden="true" />
 								<span style={{ fontSize: '18px' }}>Board</span>
 							</BoardButton>
 							<SearchButton>
-								<i class="fa fa-search" aria-hidden="true" />
+								<i className="fa fa-search" aria-hidden="true" />
 							</SearchButton>
 						</LeftSection>
 						<Logo>Slate</Logo>
@@ -219,10 +217,10 @@ class Navabar extends Component {
 								<ChangeColourContainer style={{ display: 'none' }} />
 							)}
 							<SmallButton onClick={this.changeColor}>
-								<i class="fas fa-palette" />
+								<i className="fas fa-palette" />
 							</SmallButton>
 							<SmallButton className="gg-add-r">
-								<i class="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
+								<i className="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
 							</SmallButton>
 							<Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQHCm80Shzkvsg/profile-displayphoto-shrink_400_400/0?e=1602720000&v=beta&t=HjjGVtjYNxp3b3ZC4IEqUpQL_SNqBGhD7cqmbVP0Jb8" />
 						</RightSection>
@@ -231,14 +229,14 @@ class Navabar extends Component {
 					<Wrapper style={{ backgroundColor: ' rgb(45, 114, 25, 0.5)' }}>
 						<LeftSection>
 							<SmallButton>
-								<i class="fa fa-home" aria-hidden="true" />
+								<i className="fa fa-home" aria-hidden="true" />
 							</SmallButton>
 							<BoardButton>
-								<i class="fa fa-list-alt" aria-hidden="true" />
+								<i className="fa fa-list-alt" aria-hidden="true" />
 								<span style={{ fontSize: '18px' }}>Board</span>
 							</BoardButton>
 							<SearchButton>
-								<i class="fa fa-search" aria-hidden="true" />
+								<i className="fa fa-search" aria-hidden="true" />
 							</SearchButton>
 						</LeftSection>
 						<Logo>Slate</Logo>
@@ -258,10 +256,10 @@ class Navabar extends Component {
 								<ChangeColourContainer style={{ display: 'none' }} />
 							)}
 							<SmallButton onClick={this.changeColor}>
-								<i class="fas fa-palette" />
+								<i className="fas fa-palette" />
 							</SmallButton>
 							<SmallButton className="gg-add-r">
-								<i class="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
+								<i className="fa fa-plus" aria-hidden="true" onClick={this.props.addList} />
 							</SmallButton>
 							<Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQHCm80Shzkvsg/profile-displayphoto-shrink_400_400/0?e=1602720000&v=beta&t=HjjGVtjYNxp3b3ZC4IEqUpQL_SNqBGhD7cqmbVP0Jb8" />
 						</RightSection>
